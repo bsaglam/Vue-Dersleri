@@ -1,0 +1,21 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<html>
+    <body>
+        <div id="event">
+             <button v-on:click="Show">Göster</button>
+             <button v-on:click="counter++">Direk JS Kodu yazarak artır</button>
+             <button v-on:click="Increase">Method ile artır</button>
+             <p>{{counter}}</p>
+        </div>
+    </body>
+    <script>
+       new Vue({
+        el : "#event",
+        data : {counter : 0},
+        methods : {
+            Show : function(){ alert("merhaba");},
+            Increase : function() {this.counter++;}
+        }
+       });
+    </script>
+</html>
