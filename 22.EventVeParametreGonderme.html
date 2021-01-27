@@ -1,0 +1,24 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<html>
+    <body>
+        <div id="event">
+              <button v-on:click="Increase(3, $event)">Artır</button>
+              <p>{{count}},</p>
+              <p>x:{{x}},</p>
+              <p>y:{{y}} </p>
+        </div>
+    </body>
+    <script>
+       new Vue({
+        el : "#event",
+        data : { count : 0, x: 0, y : 0},
+        methods : {
+             Increase : function(step,event) {
+                 this.count += step;
+                 this.x=event.clientX;
+                 this.y=event.clientY;
+             }
+        }
+       });
+    </script>
+</html>
