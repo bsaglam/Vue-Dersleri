@@ -1,0 +1,21 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<html>
+    <body>
+        <div id="app">
+            <!--Mouse p üzerinde hareket ettikçe mouse ın değişen koordinatlarını getirir.-->
+             <p v-on:mousemove="GetCoordinates">Koordinatlar: {{x}},{{y}}</p>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el : "#app",
+            data : {x : 0, y:0},
+            methods:{ 
+              GetCoordinates : function(event){
+                this.x=event.clientX;
+                this.y=event.clientY;
+              }  
+            }
+        });
+    </script>
+</html>
