@@ -1,0 +1,49 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<html>
+    <body>
+        <div id="app">
+            <!--Interpolation kullanarak name ve age yazılması-->
+            <p>{{name}}</p>
+            <p>{{age}}</p>
+
+            <!--2.Yaşın 5 ile çarpılması-->
+            <p>{{Carp()}}</p>
+
+            <!--3.Random 0-1 arasında sayı üretilemesi)-->
+            <p>Rasgele sayı {{GetNumber()}}</p>
+
+            <!--4. herhangi bir resmi img etiketi içinde gösterme-->
+            <!-- burda attribute bind etme kullanalım-->
+            <img  v-bind:src="imgLink"/>
+
+            <!--Name değişkeninin değerinin <input /> içine yazdığınız değer ile anlık olarak değiştirilmesini sağlayınız. ("value" attribute kullanarak)-->
+            <!--bu çözüm bu sorunun çözümü değil, istenen bir event oluşturulması-->
+            <input type="text" v-bind:value="name">
+
+            <input type="text" v-on:input="Change">
+        </div>
+        
+    </body>
+    <script>
+        new Vue({
+            el : "#app",
+            data : {
+                name:"Burcu", 
+                age:"32",
+                imgLink:"https://icons.iconarchive.com/icons/goescat/macaron/256/atom-icon.png"
+            },
+            methods: {
+                Carp : function()
+                { 
+                    return this.age*5
+                },
+                GetNumber : function(){
+                    return Math.random(0,1);
+                },
+                Change : function(event){
+                    this.name = event.target.value;
+                }
+                }
+        });
+    </script>
+</html>
