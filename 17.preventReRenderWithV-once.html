@@ -1,0 +1,18 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<html>
+    <body>
+        <div id="app">
+        <p v-once>{{user}}</p><a v-bind:href="link">Link</a>  
+        <p>{{Hello()}} </p>  
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el : "#app",
+            data : {link : "https://github.com/bsaglam/Vue-Dersleri", user:"Burcu"},
+            methods : {Hello : function(){ 
+                this.user="guess";
+                return "hello " + this.user;}}
+        });
+    </script>
+</html>
