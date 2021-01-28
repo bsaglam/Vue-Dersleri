@@ -1,0 +1,126 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+    <style>
+        /*1.soru*/
+        .highligth{
+            background-color:red;
+            width: 200px;
+        }
+        .shrink{
+            background-color:gray;
+            width:50px;
+        }
+        #effect{
+            width: 100px;
+            height: 100px;
+            border:1px solid black;
+        }
+
+        /* 2.soru */
+        .color {
+            background-color: pink;
+        }
+        .sekil{
+            border:1px solid black;
+        }
+
+        /*3.soru*/
+        .blue {background-color:blue;}
+        .cyan {background-color:cyan;}
+        .yellow{background-color:yellow;}
+        .boyutlandir{
+            border:1px solid black;
+            width: 100px;
+            height: 100px;
+        }
+
+       
+         
+    </style>
+    <body>
+        <div id="exercise">
+            <!-- 1) Efekti Butona basarak başlatın. Efekt "highlight" ve/veya "shrink" class'ları 
+                    arasında değişmelidir. Bu değişim her bir interval döngüsünde olmalıdır. 
+                    ("effect" id' li div'e o anki aktif olan class eklenecektir.) -->
+            <div class="birinciSoru">
+                <button @click="StartEffect()">Effeck Başlat!</button>
+                <div id="effect" :class="shape"></div>
+            </div>
+
+            <!-- 2) Birkaç tane CSS Class'ı üreterek bu Class'ları Array Syntax'ı ile aşağıdaki <div>' e ekleyiniz -->
+            <div :class="[className,shapeName]" :style="{height:'100px',width:'100px'}">
+
+            </div>
+
+            <!-- 3) Örnek birkaç tane Class üreterek (Ya da ürettiklerinizi kullanarak) <input> içerisine Class adı girerek hemen alttaki <div> elementine bu yazılan Class'ı eklemeyi yapınız. -->
+            <div>
+                <input type="text" v-model="userInput">
+                <div :class="[userInput,boyut]" ></div>
+            </div>
+            <!-- 4) Kullanıcının Class isimlerini girebileceği iki adet <input> elementimiz var. 
+                Bunları kullanarak hemen alttaki <div> elementinin Class'larini attached etmesini sağlayınız  -->
+            <div>
+                <input type="text" v-model="inputClass1">
+                <input type="text" v-model="inputClass2">
+                <div :class="[inputClass1,inputClass2]" :style="{width:'100px',height:'100px'}"></div>
+            </div>
+
+
+            <!-- 6) setInterval ve Style Binding kullanarak Basit bir progress bar üretin. 
+                Progress bar' ın çalışmasını buton'a basarak başlatın. -->
+            <div>
+                <button v-on:click="startProgress">Progress İşlemini Başlat!</button>
+                <br/>
+                <div :style="{height:'20px',backgroundColor:'black',width : genislik+'px'}"></div>
+            </div>
+    </body>
+    <script>
+        new Vue({
+            el : "#exercise",
+            data : 
+            {
+                /*1.soru*/
+                shape : "",
+                
+                /*2.soru*/
+                className : "color",
+                shapeName :"sekil",
+                
+                /*3.soru*/
+                userInput :"blue cyan yellow",
+                boyut: "boyutlandir",
+
+                /*4.soru*/
+                inputClass1 : "",
+                inputClass2 : "boyutlandir",
+
+                /*6.soru*/ 
+                genislik : 0
+            },
+            methods:{
+                /*1.soru başlangıç*/
+                StartEffect : function()
+                {   debugger;
+                    this.shape="shrink";
+                    vm=this;
+                   setInterval(function()
+                   {
+                       vm.shape === "shrink" ? vm.shape="highligth" : vm.shape="shrink";
+                        
+                   },2000);
+                },
+                /*1.soru bitiş*/
+
+                /*6.soru*/
+                startProgress : function(){
+                    vm=this;
+                    setInterval(function(){
+                    vm.genislik += 10;
+                    },1000);
+                }
+            }
+
+        });
+    </script>
+</html>
+
