@@ -1,0 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<html>
+    <style>
+        .box  {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+        .blue {
+            background-color: blue;
+        }
+    </style>
+    <body>
+        <div id="exercide">
+              <div @click="result=!result" :class="ChangeClass" class="box" ></div>
+        </div>
+    </body>
+    <script>
+        new Vue({
+
+            el:"#exercide",
+            data : {result : false},
+            computed : {
+              ChangeClass : function(){ 
+                  /*değişkenlere erişirken this koymayı unutma ARTIK ya lütfen*/
+                  return {yellow:this.result,blue:!this.result} /*burda this koymayı unuttugum için saatlerce uğraştım :(*/
+              }
+            }
+
+        });
+       
+    </script>
+   
+    
+</html>
