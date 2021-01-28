@@ -1,0 +1,49 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<html>
+    <body>
+        <div id="exercise">
+            <!-- 1) value isimli property'nin değerine bakarak result için bir reactive kod yazınız. 
+            
+            Süreç ise  value 33'e eşit olmadığı durumlarda <p> elementinin içinde  "Henüz Bitmedi!!" 33 olduğunda ise "Tamamlandı" yazmalıdır.. 
+            
+            Bunun için gördüğünüz reactivity türlerinden birini kullanınız. (Not : Butonlar yardımıyla value property'nin değerini değiştirebilirsiniz ))   -->
+            <div>
+                <p>Şuanki Değer: {{ value }}</p>
+                <button @click="value+=5">Add 5</button>
+                <button @click="value+=1">Add 1</button>
+                <p>{{ result }}</p>
+            </div>
+            <!-- 2) result property' değerini izleyerek 5 saniye sonra value'nun değerini sıfırlayınız. (ipucu: setTimeout(..., 5000) kullanılabilir.-->
+            <div>
+                <input type="text" v-model="sure"> <!--Kullanıcıdan gelen süreyi içeride sure değişkenine bağladım-->
+                <p>{{ value }}</p>
+            </div>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el : "#exercise",
+            data : { 
+                value : 0,
+                sure : 0 /* input değerinden gelecek, vue.js de watch içinde kullanacağım.*/
+                },
+            computed : 
+            {
+                result : function()
+                {
+                    return this.value != 33 ? "Henüz bitmedi" : "Tamamlandı";
+                }
+            },
+            watch : {
+                result : function() //result'ın değerinde bir değişiklik olursa burası çalışacak
+                {   ts=this; // settimeout içinde kullanılmak üzere atadım.
+                    sure=this.sure;
+                    setTimeout(function(){
+                        ts.value=0;
+                        /*this.value=0;*/ /*Bunu yapmamam gerektiği halde yaptım ve 5 sn yede bekledim.this e erişilemeyen alan*/
+                    },sure);
+                }
+            }
+        });
+    </script>
+</html>
