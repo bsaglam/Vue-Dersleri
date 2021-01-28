@@ -1,0 +1,31 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<html>
+    <style>
+        .box  {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+    </style>
+    <body>
+        <div id="exercise">
+            <div @click="attachmentClass = !attachmentClass" 
+                 :class=" {yellow : attachmentClass} "
+                 class="box">
+            </div>
+        </div>
+    </body>
+    <script>
+       new Vue({
+        el : "#exercise",
+        data : 
+        {
+            attachmentClass : false
+        }
+       });
+    </script>
+    
+</html>
