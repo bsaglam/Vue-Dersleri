@@ -1,0 +1,35 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<html>
+    <style>
+        .box  {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+        .pink{
+            background-color: pink;
+        }
+        .green {
+            background-color: green;
+        }
+    </style>
+    <body>
+        <!--Kullanıcının girdiği değere göre Box'ın rengi değişsin-->
+        <div id="app">
+             <div class="box" :class="color"></div>
+             <input type="text" v-model="color">
+        </div>
+    </body>
+    
+    <script>
+        new Vue({
+            el : "#app",
+            data : { color : "green"},
+            methods:{ }  
+            
+        });
+    </script>
+</html>
