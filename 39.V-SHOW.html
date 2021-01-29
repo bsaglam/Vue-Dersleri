@@ -1,0 +1,15 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+    <body>
+        <div id="app">
+            <button @click="showP=!showP">Gizle/Göster</button>
+            <p v-show="showP">lorem ipsum </p>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el:"#app",
+            data : {showP : true}
+        });
+    </script>
+</html>

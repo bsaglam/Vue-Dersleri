@@ -1,0 +1,16 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+    <body>
+        <div id="app">
+             <ul>
+                 <li v-for="product in products">{{product}}</li>
+             </ul>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el:"#app",
+            data : { products: ['monitör','klavye','laptop']}
+        });
+    </script>
+</html>

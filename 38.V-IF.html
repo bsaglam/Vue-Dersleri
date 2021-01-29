@@ -1,0 +1,22 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+    <body>
+        <div id="app">
+            <p v-if="show">Merhaba</p> <!--show true ise bu element çalışacak-->
+            <p v-else>Hello</p> <!--show yanlış ise bu element çalışacak-->
+
+            <buttton @click="show=!show">çevir</buttton>
+
+            <p v-if="sayi>10">10'dan büyük</p>
+            <p v-else-if="sayi<10">10 dan küçük</p>
+            <p v-else>10 a eşit</p>
+
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {  show : true, sayi :11}
+        });
+    </script>
+</html>
