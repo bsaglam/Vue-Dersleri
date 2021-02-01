@@ -2,10 +2,10 @@
      <ul class="list-group">
           <li
             class="list-group-item"
-            @click="SendRight()"
+            @click="SendRight(item.id)"
             v-for="item in dizi" :key=item.id>
-            Sunucu #{{ item.id }}
-            
+            <p>Sunucu #{{ item.id }}</p>
+            <p>Durumu : {{item.status}}</p>
           </li>
         </ul>
 </template>
@@ -21,9 +21,9 @@ export default {
     }},
      
     methods : {
-        SendRight(){
+        SendRight(itemId){
             debugger;
-            eventBus.$emit("transporter",this.dizi.status)
+            eventBus.$emit("transporter",this.dizi[itemId].status)
         }
     }
 }
