@@ -36,10 +36,10 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>
-                      <input type="checkbox" value="yazilim"> Yazılım
+                      <input v-model="interests" type="checkbox" value="yazilim"> Yazılım
                     </label>
                     <label>
-                      <input type="checkbox" value="donanim"> Donanım
+                      <input v-model="interests"  type="checkbox" value="donanim"> Donanım
                     </label>
                   </div>
 
@@ -89,8 +89,8 @@
               <p style="white-space:pre;">Açıklama:{{userData.description}} </p>
               <p><strong>İlgi Alanları</strong></p>
               <ul>
-                <li v-for="item in interests" v-bind:key="item">
-                  {{item}}
+                <li v-for="x in interests" v-bind:key="x">
+                  {{x}}
                 </li>
               </ul>
               <p>Cinsiyet:{{userData.gender}}</p>
@@ -116,9 +116,9 @@ data : function(){
       description:"",
       cities:["istanbul","adana","berlin"],
       selectedCity:"",
-      interests:[]
+      
       },
-    username : ""} 
+    interests:[]} 
 }
   }
 </script>
