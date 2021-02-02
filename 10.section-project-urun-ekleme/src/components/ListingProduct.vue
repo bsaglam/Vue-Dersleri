@@ -1,28 +1,34 @@
 <template>
+<div v-if="productList.length>0">
+    <h3 class="text-center">Eklenen Ürünlerin Listesi</h3>
+    <hr>
 <div class="row product-container">
     <!--productList değişkenini burda kullnırız. çünkü  product ları burda for ile döneceğiz.-->
-    <Product :v-for="product in productList">  <!--Product içeriği direk product içine alınmadı. Slot kullanılarak gönderildi.-->
+    <Product v-for="item in productList" v-bind:key="item.id">  <!--Product içeriği direk productComponent içine alınmadı. Slot kullanılarak gönderildi.-->
         <div class="col-md-2 card">
-        <img class="card-img-top" src="/src/assets/default.png" alt="Card image cap">
+        <img class="card-img-top" :src=item.selectedImage alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">{{item.name}}</h5>
           <small>
-            <strong>Adet : product.count </strong> 1
+            <strong>Adet :  </strong> {{item.count}}
           </small>
           <br>
           <small>
-            <strong>Fiyat : product.price</strong> 10
+            <strong>Fiyat : </strong>  {{item.price}}
           </small>
           <br>
           <small>
-            <strong>Tutar : product.totalPrice</strong> 10
+            <strong>Tutar : </strong>  {{item.totalPrice}}
           </small>
         </div>
       </div>
     </Product> 
 </div>
+</div>
+
 </template>
 <script>
+import {eventBus} from '../main'
 import Product from './Product'
 export default {
     components : {Product:Product},
@@ -31,6 +37,26 @@ export default {
         productList: []
       }
     },
+    created(){
+        eventBus.$on("productAdded",(value)=>{
+        if(this.productList.length < 2){
+           this.productList.push(value);
+           /**progres bar'ı burddaki kontrolden sonra update edelim */
+           eventBus.$emit("progresBarUpdated",this.productList.length);
+        }
+        else{
+            alert("daha fazla ürün ekleyemezsiniz.");
+        }
+        });
+
+        /**
+         * Ürün eklednikten sonra progress bar a da bunn bilgisinin verilmesi gerekiyor
+         * 1. bunu addproduct ksımında ürün eklendikten hemen sonra yapabiliriz fakat toplam
+         * ürün sayısı burda ve burda kontrole diyoruz. orda eklememiz duurmunda, progress bar ı ilerletip
+         * sayı kota geçince progressi geri almak zorunda kalırız.
+         */
+        
+    }
 }
 </script>
 <style>

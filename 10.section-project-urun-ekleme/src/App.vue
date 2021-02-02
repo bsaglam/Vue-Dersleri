@@ -8,8 +8,7 @@
      <!--ProgressingBar-->
      <Progressing></Progressing>
     <br><br>
-    <h3 class="text-center">Eklenen Ürünlerin Listesi</h3>
-    <hr>
+    
     <!--Listing Product-->
     <ListingProduct></ListingProduct>
   </div>
