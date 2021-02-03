@@ -69,6 +69,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <button
+                   @click.prevent="submit"
                     class="btn btn-primary">Gönder!
                   </button>
                 </div>
@@ -77,7 +78,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6" v-if="isSubmitted==true">
           <div class="panel panel-info">
             <div class="panel-heading">
               <h4>Form Verileri</h4>
@@ -118,7 +119,14 @@ data : function(){
       selectedCity:"",
       
       },
-    interests:[]} 
+    interests:[],
+    isSubmitted: false
+    } 
+},
+methods : {
+  submit(){
+    this.isSubmitted=true;
+  }
 }
   }
 </script>
